@@ -1,0 +1,16 @@
+--- #YAML:1.0
+name:                Games-CroqueMonster
+version:             0.8.1-1
+abstract:            An interface for the French web game CroqueMonster.
+license:             ~
+author:              
+    - Arnaud Dupuis <a.dupuis@infinityperl.org>
+generated_by:        ExtUtils::MakeMaker version 6.44
+distribution_type:   module
+requires:     
+    LWP::Simple:                   1.41
+    Test::More:                    0
+    XML::Simple:                   2.18
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3
