@@ -13,11 +13,11 @@ Games::CroqueMonster - An interface for the French web game CroqueMonster.
 
 =head1 VERSION
 
-Version 0.8.1-1
+Version 0.8.1-2
 
 =cut
 
-our $VERSION = '0.8.1-1';
+our $VERSION = '0.8.1-2';
 
 
 =head1 SYNOPSIS
@@ -35,7 +35,9 @@ There is few required dependencies (all available from CPAN) : LWP::Simple and X
     my $cm = Games::CroqueMonster->new(agency_name => 'UglyBeasts');
     my $agency_info = $cm->agency();
 
-So far the CroqueMonster's API only allow to retrieve informations from the website, but maybe in some uncertain futur it will be possible to take actions with it...
+So far the CroqueMonster's API only allow to retrieve informations, but maybe in some uncertain futur it will be possible to take actions with it...
+
+Technically speaking, this module interacts with a webb service. So you cannot get a fully functionnal game with this module alone, only easily create interfaces for the game itself.
 
 =head1 CONSTRUCTOR
 
@@ -98,6 +100,7 @@ On success, the returned hashref look like that :
         };
 
 The following keys are present only when you provide a valid "api_key" : 
+
 	* gold
 	* mails
 
@@ -325,6 +328,31 @@ Takes no parameters.
 
 On success, the returned hashref look like that (When you see [...] it just means that there was too many data and I cutted some) :
 
+	$VAR1 = {
+		'portails' => {
+				'portail' => {
+					'1141215' => {
+							'country' => 'Allemagne',
+							'city' => 'Saarbruck',
+							'level' => '1',
+							'timezone' => '0',
+							'defense' => '0',
+							'id' => '1141215'
+							},
+					'1160353' => {
+							'country' => 'Etats-Unis',
+							'city' => 'Columbus',
+							'level' => '1',
+							'timezone' => '-6',
+							'defense' => '0',
+							'id' => '1160353'
+							}
+					},
+				'id' => '383869',
+				'agency' => 'UglyBeasts'
+			}
+		};
+
 Please see ERRORS section for values returned on error.
 
 =cut
@@ -489,7 +517,7 @@ sub _parse_data {
 
 =head1 ERRORS
 
-When a call end up in error, a hash refernce is returned. This hashref look like this :
+When a call end up in error, a hash reference is returned. This hashref look like this :
 
 	$VAR1 = {
 		'err' => {
@@ -564,7 +592,7 @@ L<http://search.cpan.org/dist/Games-CroqueMonster>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2008 Arnaud Dupuis, all rights reserved.
+Copyright 2008-2010 Arnaud Dupuis, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
